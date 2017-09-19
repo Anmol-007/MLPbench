@@ -1,0 +1,55 @@
+#!/usr/bin/gnuplot
+reset
+set terminal png size 1600,1200
+
+#set xdata iteration
+#set format x "%H:%M"
+#help set
+#help set xtics
+#set key noenhanced
+set key under
+#set key invert autotitle columnhead
+
+#set xtics  0,0.5,4.5
+#set xtics  ("Unb" 1,".125" 2,".25" 3,".5" 4,"1" 5,"1.5" 6,"2" 7,"2.5" 8,"3" 9,"3.5" 10,"4" 11,"4.5" 12,"5" 13,"5.5" 14,"6" 15,"6.5" 16,"7" 17,"7.5" 18,"8" 19,"8.5" 20, "9"21, "9.5"22, "10"23, "11"24, "12"25,"13"26,"14"27,"15"28,"16"29,"17"30,"18"31,"19"32,"20"33,"21"34,"22"35,"23"36,"24"37,"25"38,"26"39 )
+#set xtics  ("0" 1,".125" 2,".5" 3,"1" 4,"1.5" 5,"2" 6,"2.5" 7,"3" 8,"3.5" 9,"4" 10,"4.5" 11)
+set xlabel "Number of MEM accesses"
+#set xrange [0:40]
+#set yrange [100:3000]
+set ylabel "Cost in cycles"
+set mytics
+set title "Cost of parallelism of MEM accesses"
+set key reverse Left outside
+set grid
+set xtics rotate 45
+set style data linespoints
+
+plot \
+"cost_data.dat" using 3:xtic(1) title 'Cost of MEM level parallelism ' w linespoints
+
+
+
+#plot \
+#"data-2.dat" using 4:xtic(2) title '2 MEM' w linespoints, \
+#"data-3.dat" u 4 title '3 MEM' w linespoints,\
+#"data-4.dat" u 4 title '4 MEM' w linespoints,\
+#"data-5.dat" u 4 title '5 MEM' w linespoints,\
+#"data-6.dat" u 4 title '6 MEM' w linespoints,\
+#"data-7.dat" u 4 title '7 MEM' w linespoints,\
+#"data-8.dat" u 4 title '8 MEM' w linespoints,\
+#"data-9.dat" u 4 title '9 MEM' w linespoints,\
+#"data-10.dat" u 4 title '10 MEM' w linespoints,\
+#"data-11.dat" u 4 title '11 MEM' w linespoints,\
+#"data-12.dat" u 4 title '12 MEM' w linespoints,\
+#"data-13.dat" u 4 title '13 MEM' w linespoints,\
+#"data-14.dat" u 4 title '14 MEM' w linespoints,\
+#"data-15.dat" u 4 title '15 MEM' w linespoints,\
+#"data-16.dat" u 4 title '16 MEM' w linespoints,\
+#"data-17.dat" u 4 title '17 MEM' w linespoints,\
+#"data-18.dat" u 4 title '18 MEM' w linespoints,\
+#"data-19.dat" u 4 title '19 MEM' w linespoints,\
+#"data-20.dat" u 4 title '20 MEM' w linespoints,\
+#"data-21.dat" u 4 title '21 MEM' w linespoints
+#
+
+#plot "while_final.txt" using 1:4:3:5 with errorbars lw 2
